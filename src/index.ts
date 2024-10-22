@@ -1,12 +1,10 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import router from './modules';
 
 const app = express();
 const port = 3000;
 
-// Endpoint básico
-app.get('/', (req: Request, res: Response) => {
-  res.send('¡Hola, mundo desde TypeScript y Express!');
-});
+app.use(router);
 
 // Iniciar el servidor
 app.listen(port, () => {
