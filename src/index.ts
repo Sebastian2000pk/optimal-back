@@ -6,9 +6,9 @@ import { config } from "./config";
 
 const app = express();
 
-app.use(router);
-app.use(cors());
 app.use(express.json());
+app.use(cors());
+app.use("/api", router);
 
 // Conectar a la base de datos
 sequelize

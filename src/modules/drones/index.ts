@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { DronesController } from "./controller";
 
 const router = Router();
+const dronesController = new DronesController();
 
-router.get("/", (req, res) => {
-  res.send("¡Hola, mundo desde TypeScript y Express! 2");
-});
+router.get("/", dronesController.getDrones);
+router.get("/:id", dronesController.getDrone);
+router.post("/", dronesController.createDrone);
 
 export default router;
