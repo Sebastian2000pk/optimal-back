@@ -13,4 +13,16 @@ export class DroneServices {
   async createDrone(drone: Drone): Promise<Drone> {
     return DroneModel.create(drone);
   }
+
+  async updateDrone(id: number, drone: Drone): Promise<Drone | null> {
+    const [, [updatedDrone]] = await DroneModel.update(drone, {
+      where: { id },
+      returning: true,
+    });
+    return updatedDrone;
+  }
+
+  async deleteDrone(id: number): Promise<number> {
+    return DroneModel.destroy({ where: { id } });
+  }
 }
